@@ -1,0 +1,21 @@
+{
+  "name": "down_img",
+  "version": "0.0.1",
+  "description": "down_img",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "vonmarshall",
+  "license": "ISC",
+  "dependencies": {
+    "crypto": "^1.0.1",
+    "fs": "^0.0.1-security",
+    "querystring": "^0.2.0",
+    "request": "^2.88.2",
+    "sharp": "^0.25.1"
+  },
+  "devDependencies": {
+    "@types/node": "^13.7.2"
+  }
+}
