@@ -2,7 +2,7 @@ import * as Ut from './common';
 import { existsSync } from 'fs';
 
 
-export class  down{
+export class  download{
   
   public imageDownPath = "./image/";
   
@@ -27,7 +27,7 @@ export class  down{
       console.log(imagePath + " 目录不存在！");
       return;
     }
-    this.down_img(url, imagePath, name);
+    this.download_img(url, imagePath, name);
 
   }
 
@@ -35,7 +35,7 @@ export class  down{
    * 下载图片
    * @param url 图片地址 
    */
-  public async down_img(url:string, imagePath:string, name:string){
+  public async download_img(url:string, imagePath:string, name:string){
     let opts = {
       url: url,
     };

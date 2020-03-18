@@ -1,7 +1,7 @@
 {
-  "name": "down_img",
+  "name": "image-process",
   "version": "0.0.1",
-  "description": "down_img",
+  "description": "image-process",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
