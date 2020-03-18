@@ -66,6 +66,18 @@ export function makedirSync(dirname:string) {
 };
 
 /**
+ * 获取文件扩展名
+ * @param filePath 文件地址 
+ */
+export function getFileExtname(filePath:string) {
+  if (!filePath) {
+    return false;
+  }
+  let extname:string = path.extname(filePath);
+  return extname;
+}
+
+/**
  * 修改原图片并覆盖
  * @param imagePath 图片地址
  */
