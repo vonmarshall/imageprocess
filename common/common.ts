@@ -75,7 +75,7 @@ export function getFileExtname(filePath:string) {
   }
   let extname:string = path.extname(filePath);
   return extname;
-}
+};
 
 /**
  * 修改原图片并覆盖

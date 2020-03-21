@@ -1,4 +1,4 @@
-import * as Ut from './common';
+import * as Ut from './common/common';
 import { existsSync } from 'fs';
 
 
