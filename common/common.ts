@@ -10,7 +10,7 @@ import * as sharp from "sharp";
  * @param path 存放路径
  */
 export function downImg(opts:any = {}, path:string = '') {
-  let writeStream = fs.createWriteStream(path);
+  
   return new Promise((resolve, reject) => {
     request
       .get(opts)
@@ -18,7 +18,7 @@ export function downImg(opts:any = {}, path:string = '') {
         //console.log("img type:", response);
         //console.log("img type:");
       })
-      .pipe(writeStream)
+      .pipe(fs.createWriteStream(path))
       .on("error", (e) => {
         console.log("pipe error", e)
         resolve('');
