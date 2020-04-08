@@ -3,6 +3,8 @@ import * as fs from "fs";
 import * as crypto  from "crypto";
 import * as path from "path";
 import * as sharp from "sharp";
+import * as xlsx from 'node-xlsx';
+import * as moment from 'moment';
 
 /**
  * 下载网络图片
@@ -141,3 +143,30 @@ export function changeImgOut(imagePath:string, outPath:string) {
 export function convert2Sharp(imagePath){
   return sharp(imagePath);
 };
+
+/**
+ * 写入xlsx
+ * @param fileName 
+ * @param data 
+ */
+export function writeXlsx(fileName:string,data:any){
+  let lastTmie = moment(Date.now()).subtract(1, 'days').format('YYYY-MM-DD');
+  let NowTime = moment(Date.now()).format('YYYY-MM-DD');
+  let nextTime = moment(Date.now()).add(1, 'days').format('YYYY-MM-DD');
+  data = [
+      {
+      name: NowTime,
+      data: data
+      }
+  ]
+  let buffer:Buffer = xlsx.build(data);
+  // 写入文件
+  fs.writeFile('./data/'+ fileName +'.xlsx', buffer, function(err) {
+  if (err) {
+      console.log("Write failed: " + err);
+      return;
+  }
+  console.log("Write completed.");
+  });
+
+}
