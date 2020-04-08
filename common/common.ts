@@ -18,7 +18,7 @@ export function downImg(opts:any = {}, path:string = '') {
         //console.log("img type:", response);
         //console.log("img type:");
       })
-      .pipe(fs.createWriteStream(path))
+      .pipe(fs.createWriteStream(path,{autoClose:true}))
       .on("error", (e) => {
         console.log("pipe error", e)
         resolve('');
