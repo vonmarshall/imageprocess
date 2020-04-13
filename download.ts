@@ -38,6 +38,7 @@ export class  download{
   public async download_img(url:string, imagePath:string, name:string){
     let opts = {
       url: url,
+      timeout:3000
     };
     let imageName = Ut.encryption(name)
     let paths = imagePath + imageName +".jpg";

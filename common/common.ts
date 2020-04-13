@@ -16,9 +16,16 @@ export function downImg(opts:any = {}, path:string = '') {
   return new Promise((resolve, reject) => {
     request
       .get(opts)
+      .on('error', (error) => {
+        console.log(error);
+        reject('');
+      })
       .on('response', (response) => {
         //console.log("img type:", response);
-        //console.log("img type:");
+        console.log("statusCode:",  response.statusCode);
+        if (response.statusCode != 200) {
+          reject('');
+        }
       })
       .pipe(fs.createWriteStream(path,{autoClose:true}))
       .on("error", (e) => {
