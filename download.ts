@@ -10,7 +10,7 @@ export class  download{
     
   }
 
-  public async run(sid:number = 0, url:string = "", key:number = 0) {
+  public async run(sid:number = 0, url:string = "", key:number = 0, sname:string = '') {
     if (!url) {
       console.error("下载地址不存在！");
       return;
@@ -18,6 +18,9 @@ export class  download{
     let imagePath = this.imageDownPath + sid + '/';
     let flag = false;
     let name = sid + '_' + key;
+    if (sname) {
+      name = sname;
+    }
     if (!existsSync(imagePath)) {
       flag = Ut.makedirSync(imagePath);
     }else {

@@ -14,32 +14,19 @@ import * as moment from 'moment';
 export function downImg(opts:any = {}, path:string = '') {
   
   return new Promise((resolve, reject) => {
-    request
-      .get(opts)
-      .on('error', (error) => {
-        console.log(error);
-        reject('');
-      })
-      .on('response', (response) => {
-        //console.log("img type:", response);
-        console.log("statusCode:",  response.statusCode);
-        if (response.statusCode != 200) {
-          reject('');
+    opts['encoding'] ='binary';
+    request.get(opts, function(err, res, body){
+      if (err) {
+        resolve(false);
+      }else {
+        if (!res || res.statusCode != 200) {
+          resolve(false);
+        }else {
+          fs.writeFileSync(path, body,"binary");
+          resolve(true);
         }
-      })
-      .pipe(fs.createWriteStream(path,{autoClose:true}))
-      .on("error", (e) => {
-        console.log("pipe error", e)
-        resolve('');
-      })
-      .on("finish", () => {
-        console.log("finish");
-        resolve("ok");
-      })
-      .on("close", () => {
-        console.log("close");
-      });
-
+      }
+    });
   })
 }; 
 
